@@ -45,4 +45,7 @@ function playRound(computerChoice, playerChoice) {
     console.log(result);
 }
 
-playRound(getComputerChoice(), "rock")
+const computerSelection = getComputerChoice();
+const playerSelection = document.getElementById("inp1");
+
+console.log(playerSelection);
