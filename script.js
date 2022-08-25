@@ -42,10 +42,35 @@ function playRound(computerChoice, playerChoice) {
             result = "You lose! Scissors beats Paper"
         }
     }
-    console.log(result);
+    return result;
 }
 
-const computerSelection = getComputerChoice();
-const playerSelection = document.getElementById("inp1");
 
-console.log(playerSelection);
+function game() {
+    for (let i = 0; i < 5; i++) {
+        var playerScore = 0;
+        var computerScore = 0;
+        computerSelection = getComputerChoice();
+        playerSelection = window.prompt("Enter guess here!") //document.getElementById("inp1");
+        console.log(playRound(computerSelection, playerSelection));
+
+        if (result.slice(0,6) == "You win") {
+            playerScore++;
+        }
+        else {
+            computerScore++;
+        }
+    }
+    if (playerScore > computerScore) {
+        console.log(`Player ${playerScore} Computer ${computerScore}, You Win!`);
+    }
+    else {
+        console.log(`Player ${playerScore} Computer ${computerScore}, You Lose!`)
+    }
+}
+
+game();
+//const computerSelection = getComputerChoice();
+//const playerSelection = window.prompt("Enter guess here!") //document.getElementById("inp1");
+
+//console.log(playRound(computerSelection, playerSelection));
