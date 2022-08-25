@@ -47,18 +47,20 @@ function playRound(computerChoice, playerChoice) {
 
 
 function game() {
+    var playerScore = 0;
+    var computerScore = 0;
     for (let i = 0; i < 5; i++) {
-        var playerScore = 0;
-        var computerScore = 0;
         computerSelection = getComputerChoice();
         playerSelection = window.prompt("Enter guess here!") //document.getElementById("inp1");
         console.log(playRound(computerSelection, playerSelection));
 
-        if (result.slice(0,6) == "You win") {
+        if (result.slice(0,7) == "You win") {
             playerScore++;
+            console.log(result.slice(0,7));
         }
-        else {
+        else if (result.slice(0,8) == "You lose") {
             computerScore++;
+            console.log(result.slice(0,8));
         }
     }
     if (playerScore > computerScore) {
@@ -70,7 +72,3 @@ function game() {
 }
 
 game();
-//const computerSelection = getComputerChoice();
-//const playerSelection = window.prompt("Enter guess here!") //document.getElementById("inp1");
-
-//console.log(playRound(computerSelection, playerSelection));
