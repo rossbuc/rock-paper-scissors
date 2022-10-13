@@ -21,54 +21,47 @@ function playRound(computerChoice, playerChoice) {
     if (computerChoice == "rock") {
         if (playerChoice.toLowerCase() == "scissors") {
             result = "You lose! Rock beats Scissors";
+            computerScore ++;
         }
         if (playerChoice.toLowerCase() == "paper") {
             result = "You win! Paper beats Rock";
+            playerScore ++;
         }
     }
     if (computerChoice == "paper") {
         if (playerChoice.toLowerCase() == "rock") {
             result = "You lose! Paper beats Rock";
+            computerScore ++;
         }
         if (playerChoice.toLowerCase() == "scissors") {
             result = "You win! Scissors beats Paper";
+            playerScore ++;
         }
     }
     if (computerChoice == "scissors") {
         if (playerChoice.toLowerCase() == "rock") {
             result = "You win! Rock beats Scissors";
+            playerScore ++;
         }
         if (playerChoice.toLowerCase() == "paper") {
             result = "You lose! Scissors beats Paper"
+            computerScore ++;
         }
     }
-    return result;
-}
-
-
-function game() {
-    var playerScore = 0;
-    var computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        computerSelection = getComputerChoice();
-        playerSelection = window.prompt("Enter guess here!") //document.getElementById("inp1");
-        console.log(playRound(computerSelection, playerSelection));
-
-        if (result.slice(0,7) == "You win") {
-            playerScore++;
-            console.log(result.slice(0,7));
-        }
-        else if (result.slice(0,8) == "You lose") {
-            computerScore++;
-            console.log(result.slice(0,8));
-        }
+    document.getElementById("rndResult").innerText = result;
+    
+    if (computerScore >= 5) {
+        document.getElementById("score").innerText = `You Lose! Computer ${computerScore} Player ${playerScore}`;
     }
-    if (playerScore > computerScore) {
-        console.log(`Player ${playerScore} Computer ${computerScore}, You Win!`);
-    }
-    else {
-        console.log(`Player ${playerScore} Computer ${computerScore}, You Lose!`)
+    if (playerScore >= 5) {
+        document.getElementById("score").innerText = `You Win! Computer ${computerScore} Player ${playerScore}`;
     }
 }
 
-game();
+const options = document.querySelectorAll('.rock, .paper, .scissors');
+var playerScore = 0;
+var computerScore = 0;
+options.forEach(option => {
+    console.log(option.className);
+    option.addEventListener('click',() => playRound(getComputerChoice(), option.className));
+})
